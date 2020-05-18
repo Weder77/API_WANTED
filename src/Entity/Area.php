@@ -22,18 +22,18 @@ class Area
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=60)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Wanted::class, mappedBy="area", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Monster::class, mappedBy="area", orphanRemoval=true)
      */
-    private $wanteds;
+    private $monsters;
 
     public function __construct()
     {
-        $this->wanteds = new ArrayCollection();
+        $this->monsters = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -54,30 +54,30 @@ class Area
     }
 
     /**
-     * @return Collection|Wanted[]
+     * @return Collection|Monster[]
      */
-    public function getWanteds(): Collection
+    public function getMonsters(): Collection
     {
-        return $this->wanteds;
+        return $this->monsters;
     }
 
-    public function addWanted(Wanted $wanted): self
+    public function addMonster(Monster $monster): self
     {
-        if (!$this->wanteds->contains($wanted)) {
-            $this->wanteds[] = $wanted;
-            $wanted->setArea($this);
+        if (!$this->monsters->contains($monster)) {
+            $this->monsters[] = $monster;
+            $monster->setArea($this);
         }
 
         return $this;
     }
 
-    public function removeWanted(Wanted $wanted): self
+    public function removeMonster(Monster $monster): self
     {
-        if ($this->wanteds->contains($wanted)) {
-            $this->wanteds->removeElement($wanted);
+        if ($this->monsters->contains($monster)) {
+            $this->monsters->removeElement($monster);
             // set the owning side to null (unless already changed)
-            if ($wanted->getArea() === $this) {
-                $wanted->setArea(null);
+            if ($monster->getArea() === $this) {
+                $monster->setArea(null);
             }
         }
 
