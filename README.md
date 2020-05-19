@@ -11,6 +11,12 @@ php bin/console doctrine:database:create
 php bin/console doctrine:migrations:migrate
 ```
 
+#### Fill the database
+```bash
+php bin/console doctrine:fixtures:load
+```
+Use the monster.sql to fill the Monster table
+
 
 # Start the API
 ```bash
