@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\MonsterRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiProperty;
 
 /**
  * @ApiResource()
@@ -88,11 +89,12 @@ class Monster
     /**
      * @ORM\ManyToOne(targetEntity=Area::class, inversedBy="monsters")
      * @ORM\JoinColumn(nullable=false)
+     * @ApiProperty(iri="http://localhost:8000/area")
      */
     private $area;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=50)
      */
     private $position;
 
