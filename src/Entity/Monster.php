@@ -94,7 +94,8 @@ class Monster
     private $area;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\ManyToOne(targetEntity=Position::class, inversedBy="Monsters")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $position;
 
@@ -271,12 +272,12 @@ class Monster
         return $this;
     }
 
-    public function getPosition(): ?string
+    public function getPosition(): ?Position
     {
         return $this->position;
     }
 
-    public function setPosition(string $position): self
+    public function setPosition(?Position $position): self
     {
         $this->position = $position;
 

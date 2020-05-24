@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Area;
+use App\Entity\Position;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -16,6 +17,12 @@ class AppFixtures extends Fixture
             $area = new Area();
             $area->setName($value);
             $manager->persist($area);
+        }
+        $position = array("[5,-19]","[-76,-42]","[-75,-74]","Enutrosor [-1,-1]","Srambad [2,2]","Xelorium [1,6]","[0,0]","[5,-6]","Profondeur de sufokia [23,26]","Bonta [-33,-56] ou Brakmar [-26,36]","Sabloon [15,-57]");
+        foreach ($position as &$position) {   
+            $position = new Position();
+            $position->setName($value);
+            $manager->persist($position);
         }
 
         $manager->flush();
