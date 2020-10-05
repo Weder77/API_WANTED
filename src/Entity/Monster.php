@@ -8,7 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiProperty;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      collectionOperations={"get"},
+ *      itemOperations={"get"}
+ * )
  * @ORM\Entity(repositoryClass=MonsterRepository::class)
  */
 
